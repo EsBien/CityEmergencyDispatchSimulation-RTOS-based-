@@ -211,7 +211,7 @@ bool checkTaskFailed(bool taskFailed, int departmentCodde, const char* message) 
         switch (requeueEvent.eventCode) {
         case POLICE_CODE:
         {
-            if (xQueueSend(xPoliceQueue, &requeueEvent, 0) != pdPASS) {
+            if (xQueueSendFromISR(xPoliceQueue, &requeueEvent, 0) != pdPASS) {
                 // Log failure to re-queue the task
 
                 initLog(&logEntry, "Task Re-queue Failed", departmentCodde, message, 0, "Police Unable to Re-queue, Task Dropped", xTaskGetTickCount());
@@ -224,7 +224,7 @@ bool checkTaskFailed(bool taskFailed, int departmentCodde, const char* message) 
             break;
         }
         case AMBULANCE_CODE: {
-            if (xQueueSend(xAmbulanceQueue, &requeueEvent, 0) != pdPASS) {
+            if (xQueueSendFromISR(xAmbulanceQueue, &requeueEvent, 0) != pdPASS) {
                 // Log failure to re-queue the task
                 initLog(&logEntry, "Task Re-queue Failed", departmentCodde, message, 0, "Ambulance Unable to Re-queue, Task Dropped", xTaskGetTickCount());
                 logEvent(logEntry);
@@ -236,7 +236,7 @@ bool checkTaskFailed(bool taskFailed, int departmentCodde, const char* message) 
             break;
         }
         case FIRE_CODE: {
-            if (xQueueSend(xFireQueue, &requeueEvent, 0) != pdPASS) {//xQueueSendFromISR
+            if (xQueueSendFromISR(xFireQueue, &requeueEvent, 0) != pdPASS) {//xQueueSendFromISR
                 // Log failure to re-queue the task
                 initLog(&logEntry, "Task Re-queue Failed", departmentCodde, message, 0, "Fire Unable to Re-queue, Task Dropped", xTaskGetTickCount());
                 logEvent(logEntry);
@@ -244,11 +244,10 @@ bool checkTaskFailed(bool taskFailed, int departmentCodde, const char* message) 
             else {
                 initLog(&logEntry, "Task Re-queue", departmentCodde, message, 0, "Fire Re-queue, succefully", xTaskGetTickCount());
                 logEvent(logEntry);
-            }
-            break;
+            } break;
         }
         case CORONA_CODE: {
-            if (xQueueSend(xCovidQueue, &requeueEvent, 0) != pdPASS) {
+            if (xQueueSendFromISR(xCovidQueue, &requeueEvent, 0) != pdPASS) {
                 // Log failure to re-queue the task
                 initLog(&logEntry, "Task Re-queue Failed", departmentCodde, message, 0, "Covid Unable to Re-queue, Task Dropped", xTaskGetTickCount());
                 logEvent(logEntry);
@@ -256,8 +255,7 @@ bool checkTaskFailed(bool taskFailed, int departmentCodde, const char* message) 
             else {
                 initLog(&logEntry, "Task Failed", departmentCodde, message, 0, "Covid Re-queue, succefully", xTaskGetTickCount());
                 logEvent(logEntry);
-            }
-                break;
+            }break;
         }
         default:
             snprintf(requeueEvent.message, sizeof(requeueEvent.message), "Unknown event received");
