@@ -19,10 +19,10 @@ Dynamic Timing: Adjusts the event generation timer interval to simulate varying 
 
 # 🔧 Resource Management
 Limited Resources: Each department operates within predefined resource constraints:<br />
-Ambulance: 4 vehicles<br />
-Police: 3 vehicles<br />
-Fire Department: 2 vehicles<br />
-COVID Response: 4 resources<br />
+- Ambulance: 4 vehicles<br />
+- Police: 3 vehicles<br />
+- Fire Department: 2 vehicles<br />
+- COVID Response: 4 resources<br />
 Resource Borrowing: Departments can borrow resources from others during overloads.<br />
 
 # 🕒 Real-Time Scheduling
@@ -34,7 +34,7 @@ Logs every action, including resource allocation, task execution, and failures.<
 Tracks tasks that fail due to resource limitations and re-queues them for later processing.<br />
 
 **Example log:** <br />
-<span style="color:red">
+<span style="color: red">
 [1000] Action: Timer Restarted | Event Code: -1 | Department: Event Timer | Duration: 3000 ticks | Outcome: New Interval Set <br />
 [1000] Action: Event Received | Event Code: 2 | Department: A Dispatcher | Duration: 0 ticks | Outcome: Processing<br />
 [1000] Action: Event Forwarded | Event Code: 2 | Department: Ambulance Department | Duration: 0 ticks | Outcome: Forwarding<br />
@@ -46,6 +46,7 @@ Tracks tasks that fail due to resource limitations and re-queues them for later 
 [1000] Action: Task Re-queue | Event Code: 2 | Department: Ambulance | Duration: 0 ticks | Outcome: Ambulance Re-queue, successfully
 [1006] Action: Task Completed | Event Code: 3 | Department: Fire | Duration: 1000 ticks | Outcome: Task Completed Successfully<br />
 [1006] Action: Primary Released resource | Event Code: 3 | Department: Fire | Duration: 0 ticks | Outcome: Released Primary resource<br />
-[1006] Action: Resource Acquired | Event Code: 3 | Department: Fire | Duration: 0 ticks | Outcome: Primary Resource Acquired </span>
+[1006] Action: Resource Acquired | Event Code: 3 | Department: Fire | Duration: 0 ticks | Outcome: Primary Resource Acquired 
+</span>
 
 
