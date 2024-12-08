@@ -10,12 +10,12 @@ Each department manages limited resources and operates independently as FreeRTOS
 Synchronization mechanisms ensure safe access to shared resources while fault management guarantees system robustness even under heavy load.<br />
 
 # Key Features
-**🚨 Emergency Event Handling**
-Dynamic Event Processing: Emergency calls are generated randomly with varying priorities.<br />
-Departmental Task Management: Police, Ambulance, Fire Department, and COVID Response departments handle events using dedicated task queues.<br />
-Real-time Event Processing: Handles emergency events dynamically based on type and priority.<br /> 
-Fault Management: Logs failures and ensures graceful handling of resource limitations.<br /> 
-Dynamic Timing: Adjusts the event generation timer interval to simulate varying workloads.<br /> 
+**🚨 Emergency Event Handling**<br />
+- Dynamic Event Processing: Emergency calls are generated randomly with varying priorities.<br />
+- Departmental Task Management: Police, Ambulance, Fire Department, and COVID Response departments handle events using dedicated task queues.<br />
+- Real-time Event Processing: Handles emergency events dynamically based on type and priority.<br /> 
+- Fault Management: Logs failures and ensures graceful handling of resource limitations.<br /> 
+- Dynamic Timing: Adjusts the event generation timer interval to simulate varying workloads.<br /> 
 
 # 🔧 Resource Management
 Limited Resources: Each department operates within predefined resource constraints:<br />
